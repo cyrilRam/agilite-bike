@@ -4,11 +4,11 @@ from src.main.exceptions.exceptions import ValeurKilometriqueInvalideException
 class Velo:
     def __init__(self, reference: str):
         self.reference: str = reference
-        self.nombreKm: int = 0
+        self.nombre_kilometres: int = 0
 
-    def ajouterKilometres(self, kilometres: int):
+    def ajouter_kilometres(self, kilometres: int):
         if kilometres <= 0:
             raise ValeurKilometriqueInvalideException(
                 f"Valeur invalide : {kilometres}. Le nombre de kilomètres doit être positif."
             )
-        self.nombreKm += kilometres
+        self.nombre_kilometres += kilometres

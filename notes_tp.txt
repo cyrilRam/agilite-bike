@@ -1,0 +1,16 @@
+Pour la Question 17 :
+On est passé du kamelCase au snake_case
+Le extractMethod, on l'a testé pour calculer_total_kilometres mais comme il n'y a qu'une seule ligne ça créait une
+méthode pour rien donc on l'a enlevé
+
+Question 18 :
+On a testé le cas d'ajouter un nombre de kilomètres négatifs
+
+Question 19 :
+Il faut entrer pytest dans le terminal
+
+Question 20 :
+La loi de Murphy qui pourrait s'appliquer est : "Tout ce qui peut mal tourner, tournera mal."
+Pendant le développement des classes Garage et Velo, imaginons qu'on oublie de tester le cas où :
+Un vélo n'a pas été ajouté au garage, mais on appelle calculer_total_kilometres().
+On a donc ajouté le test test_calculer_total_kilometres_vide() dans la classe test_garage
