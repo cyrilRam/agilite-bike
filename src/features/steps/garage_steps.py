@@ -29,7 +29,6 @@ def step_when_ajoute_kilometres(context, nombreKm, reference):
 
 @then('le kilométrage total doit être {kilometrage}')
 def step_then_kilometrage_total(context, kilometrage):
-    x = context.garage
     assert context.garage.calculer_total_kilometres() == int(kilometrage)
 
 

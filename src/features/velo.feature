@@ -10,7 +10,7 @@ Feature: Gestion des kilomètres pour un vélo
 
   Scenario: Ajouter des kilomètres invalides
     Given un vélo avec la référence "VttGiant"
-    When j'ajoute -10 kilomètres
+    When j'ajoute -10 kilomètres (erreur)
     Then une exception doit être levée avec le message "Le nombre de kilomètres (-10) doit être un entier positif."
 
   Scenario Outline: Ajouter plusieurs kilomètres à un vélo

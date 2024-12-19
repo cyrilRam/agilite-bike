@@ -12,19 +12,20 @@ def step_given_velo(context, reference):
 
 @when('j\'ajoute {kilometres} kilomètres')
 def step_when_ajoute_kilometres(context, kilometres):
+    context.velo.ajouter_kilometres(int(kilometres))
+
+@when('j\'ajoute {kilometres} kilomètres (erreur)')
+def step_when_ajoute_kilometres(context, kilometres):
     context.kilometres = int(kilometres)
 
 @then('le vélo doit avoir {kilometrage} kilomètres')
 def step_then_velo_kilometrage(context, kilometrage):
-    context.velo.nombre_kilometres == int(kilometrage)
+   assert context.velo.nombre_kilometres==int(kilometrage)
 
 
 @then('une exception doit être levée avec le message "{message}"')
 def step_then_exception(context, message):
     with raises(ValeurKilometriqueInvalideException) as excinfo:
         context.velo.ajouter_kilometres(context.kilometres)
-
-    print(f"Message attendu : '{message}'")
-    print(f"Message réel : '{str(excinfo.value)}'")
 
     assert message == str(excinfo.value)
