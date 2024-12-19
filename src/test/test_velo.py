@@ -1,6 +1,6 @@
 import pytest
 
-from src.main.exceptions.exceptions import ValeurKilometriqueInvalideException
+from src.main.exceptions.exceptions import VeloReferenceExistanteException
 from src.main.models.velo_model import Velo
 
 
@@ -25,13 +25,13 @@ def test_ajouter_kilometres_cumule(velo):
 
 def test_ajouter_kilometres_zero(velo):
     """Test pour vérifier que l'ajout de 0 kilomètre lève une exception."""
-    with pytest.raises(ValeurKilometriqueInvalideException) as exc_info:
+    with pytest.raises(VeloReferenceExistanteException) as exc_info:
         velo.ajouter_kilometres(0)
     assert "Le nombre de kilomètres doit être positif" in str(exc_info.value)
 
 
 def test_ajouter_kilometres_negatif(velo):
     """Test pour vérifier que l'ajout d'une valeur négative lève une exception."""
-    with pytest.raises(ValeurKilometriqueInvalideException) as exc_info:
+    with pytest.raises(VeloReferenceExistanteException) as exc_info:
         velo.ajouter_kilometres(-5)
     assert "Le nombre de kilomètres doit être positif" in str(exc_info.value)

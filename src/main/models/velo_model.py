@@ -8,7 +8,5 @@ class Velo:
 
     def ajouter_kilometres(self, kilometres: int):
         if kilometres <= 0:
-            raise ValeurKilometriqueInvalideException(
-                f"Valeur invalide : {kilometres}. Le nombre de kilomètres doit être positif."
-            )
+            raise ValeurKilometriqueInvalideException(kilometres)
         self.nombre_kilometres += kilometres
