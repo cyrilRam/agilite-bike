@@ -1,5 +1,6 @@
 import pytest
 
+from src.main.exceptions.exceptions import VeloReferenceExistanteException
 from src.main.models.velo_model import Velo
 from src.main.models.garage_model import Garage
 
@@ -47,3 +48,7 @@ def test_get_total_nombre_km_apres_ajout(garage_avec_velos):
 def test_calculer_total_kilometres_vide():
     garage = Garage()
     assert garage.calculer_total_kilometres() == 0
+
+def test_ajouter_velo_existant(garage_avec_velos):
+    with pytest.raises(VeloReferenceExistanteException) as error:
+        garage_avec_velos.ajouter_un_velo(garage_avec_velos.velos[0])

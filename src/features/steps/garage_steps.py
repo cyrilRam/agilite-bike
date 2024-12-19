@@ -1,5 +1,7 @@
+from _pytest.python_api import raises
 from behave import given, when, then
 
+from src.main.exceptions.exceptions import VeloReferenceExistanteException
 from src.main.models.garage_model import Garage
 from src.main.models.velo_model import Velo
 
@@ -13,6 +15,10 @@ def step_given_garage_vide(context):
 def step_when_ajoute_velo(context, reference):
     velo = Velo(reference)
     context.garage.ajouter_un_velo(velo)
+
+@when('j\'ajoute un vélo qui existe déjà avec la référence "{reference}"')
+def step_when_ajoute_velo(context, reference):
+    context.reference = reference
 
 
 @when('j\'ajoute {nombreKm} kilomètres au vélo "{reference}"')
@@ -33,9 +39,10 @@ def step_then_velo_dans_garage(context, reference):
     assert velo is not None
     assert velo.reference == reference
 
-# @then('l\'exception doit être levée avec le message "{message}"')
-# def step_then_exception_levee(context, message):
-#     with raises(ValeurKilometriqueInvalideException) as excinfo:
-#         context.velo.ajouter_kilometres(-10)
-#
-#     assert message in str(excinfo.value)
+@then('l\'exception doit être levée avec le message "{message}"')
+def step_then_exception_levee(context, message):
+    with raises(VeloReferenceExistanteException) as excinfo:
+        velo = Velo(context.reference)
+        context.garage.ajouter_un_velo(velo)
+
+    assert message in str(excinfo.value)
