@@ -16,6 +16,7 @@ def step_when_ajoute_velo(context, reference):
     velo = Velo(reference)
     context.garage.ajouter_un_velo(velo)
 
+
 @when('j\'ajoute un vélo qui existe déjà avec la référence "{reference}"')
 def step_when_ajoute_velo(context, reference):
     context.reference = reference
@@ -37,6 +38,7 @@ def step_then_velo_dans_garage(context, reference):
     velo = context.garage.trouver_velo_par_reference(reference)
     assert velo is not None
     assert velo.reference == reference
+
 
 @then('l\'exception doit être levée avec le message "{message}"')
 def step_then_exception_levee(context, message):

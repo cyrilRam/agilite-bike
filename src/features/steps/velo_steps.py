@@ -14,13 +14,15 @@ def step_given_velo(context, reference):
 def step_when_ajoute_kilometres(context, kilometres):
     context.velo.ajouter_kilometres(int(kilometres))
 
+
 @when('j\'ajoute {kilometres} kilomètres (erreur)')
 def step_when_ajoute_kilometres(context, kilometres):
     context.kilometres = int(kilometres)
 
+
 @then('le vélo doit avoir {kilometrage} kilomètres')
 def step_then_velo_kilometrage(context, kilometrage):
-   assert context.velo.nombre_kilometres==int(kilometrage)
+    assert context.velo.nombre_kilometres == int(kilometrage)
 
 
 @then('une exception doit être levée avec le message "{message}"')

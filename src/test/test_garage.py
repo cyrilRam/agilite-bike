@@ -1,8 +1,8 @@
 import pytest
 
 from src.main.exceptions.exceptions import VeloReferenceExistanteException
-from src.main.models.velo_model import Velo
 from src.main.models.garage_model import Garage
+from src.main.models.velo_model import Velo
 
 
 @pytest.fixture
@@ -49,6 +49,19 @@ def test_calculer_total_kilometres_vide():
     garage = Garage()
     assert garage.calculer_total_kilometres() == 0
 
+
 def test_ajouter_velo_existant(garage_avec_velos):
-    with pytest.raises(VeloReferenceExistanteException) as error:
+    with pytest.raises(VeloReferenceExistanteException):
         garage_avec_velos.ajouter_un_velo(garage_avec_velos.velos[0])
+
+
+def test_trouver_velo_par_reference_existante(garage_avec_velos):
+    velo_trouve = garage_avec_velos.trouver_velo_par_reference("REF123")
+    assert velo_trouve is not None
+    assert velo_trouve.reference == "REF123"
+    assert velo_trouve.nombre_kilometres == 10
+
+
+def test_trouver_velo_par_reference_inexistante(garage_avec_velos):
+    velo_trouve = garage_avec_velos.trouver_velo_par_reference("NONEXISTANT")
+    assert velo_trouve is None

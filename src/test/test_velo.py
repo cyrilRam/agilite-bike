@@ -1,6 +1,6 @@
 import pytest
 
-from src.main.exceptions.exceptions import VeloReferenceExistanteException, ValeurKilometriqueInvalideException
+from src.main.exceptions.exceptions import ValeurKilometriqueInvalideException
 from src.main.models.velo_model import Velo
 
 
@@ -29,10 +29,7 @@ def test_ajouter_kilometres_zero(velo):
         velo.ajouter_kilometres(0)
 
 
-
 def test_ajouter_kilometres_negatif(velo):
     """Test pour vérifier que l'ajout d'une valeur négative lève une exception."""
     with pytest.raises(ValeurKilometriqueInvalideException) as exc_info:
         velo.ajouter_kilometres(-5)
-
-
