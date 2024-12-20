@@ -8,6 +8,7 @@ from src.main.models.velo_model import Velo
 
 @given('un garage vide')
 def step_given_garage_vide(context):
+    Garage.reset()
     context.garage = Garage()
 
 

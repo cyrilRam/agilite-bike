@@ -8,6 +8,7 @@ from src.main.models.velo_model import Velo
 @pytest.fixture
 def garage_avec_velos():
     """Fixture pour créer un garage avec deux vélos ayant des kilomètres attribués."""
+    Garage.reset()
     garage = Garage()
 
     velo1 = Velo("REF123")
@@ -46,6 +47,7 @@ def test_get_total_nombre_km_apres_ajout(garage_avec_velos):
 
 
 def test_calculer_total_kilometres_vide():
+    Garage.reset()
     garage = Garage()
     assert garage.calculer_total_kilometres() == 0
 
