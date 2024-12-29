@@ -11,7 +11,7 @@ class Garage:
         if cls._instance is None:
             cls._instance = super().__new__(cls)
             cls._instance.velos = velos if velos is not None else []
-            cls._instance.total_kilometres = 0
+
         return cls._instance
 
     @classmethod

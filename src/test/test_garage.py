@@ -67,3 +67,12 @@ def test_trouver_velo_par_reference_existante(garage_avec_velos):
 def test_trouver_velo_par_reference_inexistante(garage_avec_velos):
     velo_trouve = garage_avec_velos.trouver_velo_par_reference("NONEXISTANT")
     assert velo_trouve is None
+
+
+def test_garage_singleton(garage_avec_velos):
+    """
+    si je cree un nouveau garage je dois enfait renvoyer le garage déclaré dans la fixture
+    """
+    garage_bis = Garage()
+    assert len(garage_bis.velos) == 2
+    assert garage_bis.calculer_total_kilometres() == 30

@@ -3,11 +3,17 @@ from pytest import raises
 
 from src.main.exceptions.exceptions import ValeurKilometriqueInvalideException
 from src.main.models.velo_model import Velo
+from src.main.models.vtt_model import VTT
 
 
 @given('un vélo avec la référence "{reference}"')
 def step_given_velo(context, reference):
     context.velo = Velo(reference)
+
+
+@given('un VTT avec la référence "{reference}"')
+def step_given_velo(context, reference):
+    context.velo = VTT(reference)
 
 
 @when('j\'ajoute {kilometres} kilomètres')
@@ -18,6 +24,11 @@ def step_when_ajoute_kilometres(context, kilometres):
 @when('j\'ajoute {kilometres} kilomètres (erreur)')
 def step_when_ajoute_kilometres(context, kilometres):
     context.kilometres = int(kilometres)
+
+
+@when('je conduis en mode tout-terrain pour {kilometres} kilomètres')
+def step_when_ajoute_kilometres_vtt_mode(context, kilometres):
+    context.kilometres = context.velo.conduite_tout_terrain(int(kilometres))
 
 
 @then('le vélo doit avoir {kilometrage} kilomètres')

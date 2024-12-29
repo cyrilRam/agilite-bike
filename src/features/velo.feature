@@ -23,3 +23,14 @@ Feature: Gestion des kilomètres pour un vélo
       | reference | kilometres1 | kilometres2 | total_kilometres |
       | V123      | 30          | 20          | 50               |
       | V124      | 10          | 40          | 50               |
+
+  Scenario: Ajouter des kilomètres en mode tout-terrain
+    Given un VTT avec la référence "VttCube"
+    When je conduis en mode tout-terrain pour 25 kilomètres
+    Then le vélo doit avoir 50 kilomètres
+
+  Scenario: Ajouter des kilomètres en mode normal et tout-terrain
+    Given un VTT avec la référence "VttCube"
+    When j'ajoute 30 kilomètres
+    And je conduis en mode tout-terrain pour 20 kilomètres
+    Then le vélo doit avoir 70 kilomètres

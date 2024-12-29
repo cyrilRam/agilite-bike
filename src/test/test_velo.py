@@ -49,6 +49,13 @@ def test_conduite_tout_terrain_valide(vtt):
     assert vtt.nombre_kilometres == 20  # Les kilomètres sont doublés
 
 
+def test_conduite_tout_terrain_et_normal(vtt):
+    """Test pour vérifier l'ajout de kilomètres en conduite tout-terrain."""
+    vtt.conduite_tout_terrain(10)
+    vtt.ajouter_kilometres(20)
+    assert vtt.nombre_kilometres == 40  # Les kilomètres sont doublés
+
+
 def test_creer_velo_factory():
     """Test pour vérifier la création d'un VTT via la factory."""
     reference_vtt = "VTT1"

@@ -18,5 +18,11 @@ On a donc ajouté le test test_calculer_total_kilometres_vide() dans la classe t
 Dernière partie :
 -design pattern singleton pour le garage -> on a du rajouter la méthode reset car dans les tests unitaires et fonctionnelles on la logique
 de fixture -> on a du appeler cette methode dans nos tests
+-tesst unitaires rajout methodes test_conduite_tout_terrain_valide et test_creer_velo_factory et test_garage_singleton et test_conduite_tout_terrain_et_normal
+-coverage a 100% (lancer avec pycharm -> on a tout verifier bravo ...)
+-ajoute features velo pour le VTT : Ajouter des kilomètres en mode tout-terrain et Ajouter des kilomètres en mode normal et tout-terrain
+
+-storry telling -> parler de pourquoi on a un vtt qui est un type de velo different que le classique. Bcp de contraintes sur le velo et comme le
+nb de km c'est avec comme objectif l'entretien on se dit que ca "abime 2x plus le velo"
 
 
