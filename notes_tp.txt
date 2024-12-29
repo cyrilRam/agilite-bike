@@ -14,3 +14,9 @@ La loi de Murphy qui pourrait s'appliquer est : "Tout ce qui peut mal tourner, t
 Pendant le développement des classes Garage et Velo, imaginons qu'on oublie de tester le cas où :
 Un vélo n'a pas été ajouté au garage, mais on appelle calculer_total_kilometres().
 On a donc ajouté le test test_calculer_total_kilometres_vide() dans la classe test_garage
+
+Dernière partie :
+-design pattern singleton pour le garage -> on a du rajouter la méthode reset car dans les tests unitaires et fonctionnelles on la logique
+de fixture -> on a du appeler cette methode dans nos tests
+
+

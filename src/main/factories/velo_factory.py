@@ -12,8 +12,8 @@ class VeloFactory:
         return Velo(reference)
 
     @staticmethod
-    def creer_vtt(reference: str) -> Velo:
+    def creer_vtt(reference: str) -> VTT:
         """
-        Factory Method pour créer un vélo.
+        Factory Method pour créer un vtt.
         """
         return VTT(reference)
