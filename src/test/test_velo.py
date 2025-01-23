@@ -1,7 +1,7 @@
 import pytest
 
 from src.main.exceptions.exceptions import ValeurKilometriqueInvalideException
-from src.main.factories.velo_factory import VeloFactory
+from src.main.factories.velo_factory import ClassiqueVeloFactory
 from src.main.models.velo_model import Velo
 from src.main.models.vtt_model import VTT
 
@@ -60,8 +60,10 @@ def test_creer_velo_factory():
     """Test pour vérifier la création d'un VTT via la factory."""
     reference_vtt = "VTT1"
     reference_velo = "Velo1"
-    vtt = VeloFactory.creer_vtt(reference_vtt)
-    velo = VeloFactory.creer_velo_classique(reference_velo)
+
+    factory = ClassiqueVeloFactory()
+    vtt = factory.creer_vtt(reference_vtt)
+    velo = factory.creer_velo_classique(reference_velo)
 
     assert isinstance(vtt, VTT)
     assert isinstance(velo, Velo)

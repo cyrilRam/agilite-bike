@@ -1,19 +1,22 @@
+from abc import ABC, abstractmethod
+
 from src.main.models.velo_model import Velo
 from src.main.models.vtt_model import VTT
 
 
-class VeloFactory:
+class VeloFactory(ABC):
+    @abstractmethod
+    def creer_velo_classique(self, reference: str) -> Velo:
+        pass
 
-    @staticmethod
-    def creer_velo_classique(reference: str) -> Velo:
-        """
-        Factory Method pour créer un vélo.
-        """
+    @abstractmethod
+    def creer_vtt(self, reference: str) -> VTT:
+        pass
+
+
+class ClassiqueVeloFactory(VeloFactory):
+    def creer_velo_classique(self, reference: str) -> Velo:
         return Velo(reference)
 
-    @staticmethod
-    def creer_vtt(reference: str) -> VTT:
-        """
-        Factory Method pour créer un vtt.
-        """
+    def creer_vtt(self, reference: str) -> VTT:
         return VTT(reference)
